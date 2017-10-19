@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [    
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'bootstrap3',
     'cadastro',
+    'monitoramento',
+    'relatorios',
 ]
 
 MIDDLEWARE = [
