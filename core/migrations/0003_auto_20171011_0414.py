@@ -9,14 +9,14 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cadastro', '0002_caixa'),
+        ('core', '0002_caixa'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='equipamento',
             name='caixa',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cadastro.Caixa'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='core.Caixa'),
         ),
         migrations.AddField(
             model_name='equipamento',

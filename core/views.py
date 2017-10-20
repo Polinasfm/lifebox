@@ -5,33 +5,33 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 
-from cadastro.models import Equipamento, Caixa, Hospital, Viagem
-from cadastro.forms import EquipamentoForm, CaixaForm, HospitalForm, ViagemForm
+from core.models import Equipamento, Caixa, Hospital, Viagem
+from core.forms import EquipamentoForm, CaixaForm, HospitalForm, ViagemForm
 
 ###################################################################################################
 # Cadastro de Equipamentos:
 @login_required
-def equipamento_pesquisar(request):    
+def equipamento_pesquisar(request):
     # Filtra os equipamentos:
     try:
         search = request.GET.get('search')
         equipamentos_list = Equipamento.objects.filter(nome__contains=search)
     except ValueError:
         equipamentos_list = Equipamento.objects.all()
-    
+
     # Cria um paginador e seleciona a página que será exibida:
     paginator = Paginator(equipamentos_list, settings.CUSTOM_ITENS_POR_PAGINAS_TABELAS)
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-    
+
     # Retorna os itens da página correta:
     try:
         equipamentos = paginator.page(page)
     except (EmptyPage, InvalidPage):
         equipamentos = paginator.page(paginator.num_pages)
-        
+
     return render(request,
                   'equipamento/pesquisa.html',
                   {'equipamentos': equipamentos})
@@ -73,20 +73,20 @@ def caixa_pesquisar(request):
         caixas_list = Caixa.objects.filter(informacaoAdicional__contains=search)
     except ValueError:
         caixas_list = Caixa.objects.all()
-    
+
     # Cria um paginador e seleciona a página que será exibida:
     paginator = Paginator(caixas_list, settings.CUSTOM_ITENS_POR_PAGINAS_TABELAS)
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-    
+
     # Retorna os itens da página correta:
     try:
         caixas = paginator.page(page)
     except (EmptyPage, InvalidPage):
         caixas = paginator.page(paginator.num_pages)
-        
+
     return render(request,
                   'caixa/pesquisa.html',
                   {'caixas': caixas})
@@ -128,20 +128,20 @@ def hospital_pesquisar(request):
         hospitais_list = Hospital.objects.filter(nome__contains=search)
     except ValueError:
         hospitais_list = Hospital.objects.all()
-    
+
     # Cria um paginador e seleciona a página que será exibida:
     paginator = Paginator(hospitais_list, settings.CUSTOM_ITENS_POR_PAGINAS_TABELAS)
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-    
+
     # Retorna os itens da página correta:
     try:
         hospitais = paginator.page(page)
     except (EmptyPage, InvalidPage):
         hospitais = paginator.page(paginator.num_pages)
-        
+
     return render(request,
                   'hospital/pesquisa.html',
                   {'hospitais': hospitais})

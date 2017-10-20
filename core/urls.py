@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.conf.urls import url
-from cadastro import views
+from core import views
 
 urlpatterns = [
     url(r'^equipamento/$', views.equipamento_pesquisar, name='equipamento_pesquisar'),
@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^hospital/(?P<pk>\d+)/$', views.hospital_editar, name='hospital_editar'),
     url(r'^viagem/$', views.viagem_pesquisar, name='viagem_pesquisar'),
     url(r'^viagem/add$', views.viagem_criar, name='viagem_criar'),
-    url(r'^viagem/(?P<pk>\d+)/$', views.viagem_editar, name='viagem_editar'), 
+    url(r'^viagem/(?P<pk>\d+)/$', views.viagem_editar, name='viagem_editar'),
 ]
