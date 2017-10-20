@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-md-3 offset-md-9">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Digite o valor desejado" id="search" onkeypress="getSearch(event)" />
+                <input type="text" class="form-control" placeholder="Digite o valor desejado" id="search" onkeypress="getSearch(event)" autofocus />
                 <span class="input-group-addon">
                     <a href="#" onclick="getSearch()">
                         <i class="glyphicon glyphicon-search"></i>
@@ -52,7 +52,7 @@
         </thead>
 
         <tbody>
-            {% for equipamento in equipamentos %}
+            {% for equipamento in equipamentosx %}
             <tr>
                 <td>{{equipamento.id}}</td>
                 <td>

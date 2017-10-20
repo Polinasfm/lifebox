@@ -15,7 +15,10 @@ def equipamento_pesquisar(request):
     # Filtra os equipamentos:
     try:
         search = request.GET.get('search')
+        #equipamentos_list = Equipamento.objects.filter(nome__contains=search).values()
         equipamentos_list = Equipamento.objects.filter(nome__contains=search)
+
+
     except ValueError:
         equipamentos_list = Equipamento.objects.all()
 
@@ -34,7 +37,7 @@ def equipamento_pesquisar(request):
 
     return render(request,
                   'equipamento/pesquisa.html',
-                  {'equipamentos': equipamentos})
+                  {'equipamentosx': equipamentos})
 
 
 @login_required
@@ -204,3 +207,15 @@ def viagem_editar(request, pk):
     else:
         form = ViagemForm(instance=item)
     return render(request, 'viagem/formulario.html', {'form': form})
+
+###################################################################################################
+# carrega página sobre o lifebox
+@login_required
+def sobre(request):
+    return render(request, 'sobre/sobre.html')
+
+###################################################################################################
+# carrega página sobre o lifebox
+@login_required
+def desenvolvedores(request):
+    return render(request, 'sobre/desenvolvedores.html')

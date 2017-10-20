@@ -60,6 +60,15 @@
                         <a class="dropdown-item" href="{% url "viagem_pesquisar" %}"> Viagens </a>
                         </div>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sobre </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url "sobre" %}"> O LifeBox </a>
+                        <a class="dropdown-item" href="{% url "desenvolvedores" %}"> Desenvolvedores </a>
+                        </div>
+                    </li>
+
                 </ul>
               </nav>
               {% endif %}
@@ -78,7 +87,13 @@
                           data-trigger="focus"
                           data-placement="bottom"
                           data-html="true"
-                          data-content="<div style='width: 100px;'><a href='{% url "logout" %}' style='text-decoration: none;'><span class='glyphicon glyphicon-log-out'></span>Sair</a></div>">
+                          data-content="<div style='width: 100px;'>
+                            <a href='{% url "logout" %}' style='text-decoration: none;'>
+                              <span class='glyphicon glyphicon-log-out'></span>Sair</a>
+                              <br/>
+                            <a href='../../admin' style='text-decoration: none;'>
+                              <span class='glyphicon glyphicon-log-out'></span>Admin</a>
+                            </div>">
                           <span class="glyphicon glyphicon-user"></span> {{ request.user.first_name }}
                       </a>
                   </li>
